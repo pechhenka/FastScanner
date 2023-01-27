@@ -6,15 +6,15 @@ import java.io.InputStreamReader;
 /**
  * @author Pavel Sharaev (mail@pechhenka.ru)
  */
-class FastReader {
+class FastScanner {
     private final BufferedReader reader;
     private final StringBuilder sb;
 
-    public FastReader(final InputStream inputStream) {
+    public FastScanner(final InputStream inputStream) {
         this(new BufferedReader(new InputStreamReader(inputStream)));
     }
 
-    public FastReader(final BufferedReader reader) {
+    public FastScanner(final BufferedReader reader) {
         this.reader = reader;
         this.sb = new StringBuilder();
     }
