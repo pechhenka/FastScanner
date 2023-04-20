@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @author Pavel Sharaev (mail@pechhenka.ru)
@@ -19,50 +16,58 @@ class FastScanner {
         this.sb = new StringBuilder();
     }
 
-    public String next() throws IOException {
-        sb.setLength(0);
-        int code;
-        boolean isFirstWhitespace = true;
-        while ((code = reader.read()) != -1) {
-            final char ch = (char) code;
-            if (Character.isWhitespace(ch)) {
-                if (!isFirstWhitespace) {
-                    return sb.toString();
+    public String next() {
+        try {
+            sb.setLength(0);
+            int code;
+            boolean isFirstWhitespace = true;
+            while ((code = reader.read()) != -1) {
+                final char ch = (char) code;
+                if (Character.isWhitespace(ch)) {
+                    if (!isFirstWhitespace) {
+                        return sb.toString();
+                    }
+                    continue;
                 }
-                continue;
+                isFirstWhitespace = false;
+                sb.append(ch);
             }
-            isFirstWhitespace = false;
-            sb.append(ch);
-        }
 
-        if (sb.length() == 0) {
-            throw new IOException("EOF");
-        } else {
-            return sb.toString();
+            if (sb.length() == 0) {
+                throw new IOException("EOF");
+            } else {
+                return sb.toString();
+            }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 
-    public String nextLine() throws IOException {
-        return reader.readLine();
+    public String nextLine() {
+        try {
+            return reader.readLine();
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 
-    public int nextInt() throws IOException {
+    public int nextInt() {
         return Integer.parseInt(next());
     }
 
-    public long nextLong() throws IOException {
+    public long nextLong() {
         return Long.parseLong(next());
     }
 
-    public float nextFloat() throws IOException {
+    public float nextFloat() {
         return Float.parseFloat(next());
     }
 
-    public double nextDouble() throws IOException {
+    public double nextDouble() {
         return Double.parseDouble(next());
     }
 
-    public int[] nextIntArray(final int size) throws IOException {
+    public int[] nextIntArray(final int size) {
         final int[] res = new int[size];
         for (int i = 0; i < size; i++) {
             res[i] = nextInt();
@@ -70,7 +75,7 @@ class FastScanner {
         return res;
     }
 
-    public long[] nextLongArray(final int size) throws IOException {
+    public long[] nextLongArray(final int size) {
         final long[] res = new long[size];
         for (int i = 0; i < size; i++) {
             res[i] = nextLong();
