@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * @author Pavel Sharaev (mail@pechhenka.ru)
  */
-class FastScanner {
+class FastScanner implements AutoCloseable{
     private final BufferedReader reader;
     private final StringBuilder sb;
 
@@ -81,5 +81,10 @@ class FastScanner {
             res[i] = nextLong();
         }
         return res;
+    }
+
+    @Override
+    public void close() throws Exception {
+        reader.close();
     }
 }
