@@ -1,4 +1,4 @@
-# Fast Java IO
+# Java FastScanner
 
 Replacement for faster input than scanner
 
